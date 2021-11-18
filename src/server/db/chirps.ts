@@ -5,7 +5,7 @@ const all = () => {
 }
 
 const one = (chirpid: string) => {
-    Query('SELECT * FROM chirps WHERE id = ?', [chirpid]) 
+    Query('SELECT chirps.id, chirps.content, chirps._created, users.name FROM chirps JOIN users on chirps.userid = users.id WHERE chirps.id = ?', [chirpid]) 
 }
 const insert = (userid: string, content: string) => {
 Query('INSERT into chirps (userid, content) VALUES (?, ?)', [userid, content])
